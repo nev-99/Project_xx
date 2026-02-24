@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>X Prototype</title>
+
+<style>
+body{
+  margin:0;
+  background:black;
+  overflow:hidden;
+  font-family:monospace;
+}
+
+@font-face {
+  font-family: "HomeVideo";
+  src: url("font/HomeVideo.ttf") format("truetype");
+}
+</style>
+</head>
+<body>
+
+<canvas id="game"></canvas>
+
+<script>
+
+// ========================
+// 固定解像度
+// ========================
+
+const GAME_WIDTH = 480;
+const GAME_HEIGHT = 360;
+
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+const gameCanvas = document.createElement("canvas");
+gameCanvas.width = GAME_WIDTH;
+gameCanvas.height = GAME_HEIGHT;
+const gctx = gameCanvas.getContext("2d");
+
+const bg = new Image();
+bg.src = "img/test1.png";
+
+const startTime = performance.now();
+
+// ========================
+// CAMERA ID
+// ========================
+
+const CAMERA_ID = (() => {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let id = "CAM-";
+  for(let i=0;i<8;i++){
+    id += chars[Math.floor(Math.random()*chars.length)];
+  }
+  return id;
+})();
+
+// ========================
+// 画面サイズ
+// ========================
+
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize",resize);
+resize();
+
+// ========================
+// 中央配置
+// ========================
+
+function getGamePosition(){
+  return {
+    x: Math.floor((canvas.width-GAME_WIDTH)/2),
+    y: Math.floor((canvas.height-GAME_HEIGHT)/2)
+  };
+}
+
+// ========================
+// カーソル
+// ========================
+
+let cursor = {x:GAME_WIDTH/2,y:GAME_HEIGHT/2};
+
+window.addEventListener("mousemove", e=>{
+  const pos=getGamePosition();
+  cursor.x=e.clientX-pos.x;
+  cursor.y=e.clientY-pos.y;
+});
+
+// ========================
+// 主人公
+// ========================
+
+const protagonist={
+  x:GAME_WIDTH/2,
+  y:GAME_HEIGHT/2,
+  fear:0,
+  attention:0,
+  en:"...",
+  jp:"..."
+};
+
+function dist(a,b){ return Math.hypot(a.x-b.x,a.y-b.y); }
+
+function updateMind(){
+
+  const d=dist(protagonist,cursor);
+
+  if(d<150){
+    protagonist.attention+=0.05;
+    protagonist.fear+=0.02;
+  }else{
+    protagonist.attention-=0.01;
+    protagonist.fear-=0.005;
+  }
+
+  protagonist.attention=Math.max(0,Math.min(1,protagonist.attention));
+  protagonist.fear=Math.max(0,Math.min(1,protagonist.fear));
+
+  if(protagonist.fear>0.7){
+    protagonist.en="Something is watching me...";
+    protagonist.jp="何かに見られている気がする...";
+  }
+  else if(protagonist.attention>0.5){
+    protagonist.en="Why do I feel someone nearby?";
+    protagonist.jp="誰かが近くにいる気がする...";
+  }
+  else{
+    protagonist.en="...";
+    protagonist.jp="...";
+  }
+}
+
+function updateMovement(){
+  if(protagonist.attention>0.3){
+    protagonist.x+=(cursor.x-protagonist.x)*0.01;
+    protagonist.y+=(cursor.y-protagonist.y)*0.01;
+  }
+}
+
+// ========================
+// ゲーム描画
+// ========================
+
+function renderGame(){
+
+  gctx.clearRect(0,0,GAME_WIDTH,GAME_HEIGHT);
+
+  if(bg.complete){
+    gctx.drawImage(bg,0,0,GAME_WIDTH,GAME_HEIGHT);
+  }
+
+  gctx.fillStyle="white";
+  gctx.beginPath();
+  gctx.arc(protagonist.x,protagonist.y,10,0,Math.PI*2);
+  gctx.fill();
+
+  gctx.strokeStyle="gray";
+  gctx.beginPath();
+  gctx.moveTo(protagonist.x,protagonist.y);
+  gctx.lineTo(
+    protagonist.x+(cursor.x-protagonist.x)*0.3,
+    protagonist.y+(cursor.y-protagonist.y)*0.3
+  );
+  gctx.stroke();
+}
+
+// ========================
+// 字幕
+// ========================
+
+function drawSubtitle(px,py){
+
+  ctx.save();
+  ctx.textAlign="center";
+  ctx.lineWidth=4;
+  ctx.strokeStyle="rgba(0,0,0,0.7)";
+  ctx.fillStyle="white";
+
+  ctx.font="18px monospace";
+  ctx.strokeText(protagonist.en, px+GAME_WIDTH/2, py+GAME_HEIGHT-50);
+  ctx.fillText(protagonist.en, px+GAME_WIDTH/2, py+GAME_HEIGHT-50);
+
+  ctx.font="14px monospace";
+  ctx.strokeText(protagonist.jp, px+GAME_WIDTH/2, py+GAME_HEIGHT-30);
+  ctx.fillText(protagonist.jp, px+GAME_WIDTH/2, py+GAME_HEIGHT-30);
+
+  ctx.restore();
+}
+
+// ========================
+// CCTV OSD
+// ========================
+
+function drawCCTVOSD(px,py){
+
+  const now=new Date();
+
+  const dateStr =
+    now.getFullYear()+"-"+
+    String(now.getMonth()+1).padStart(2,"0")+"-"+
+    String(now.getDate()).padStart(2,"0");
+
+  let elapsed=Math.floor((performance.now()-startTime)/1000);
+  if(Math.random()<0.01) elapsed--;
+
+  const hh=String(Math.floor(elapsed/3600)).padStart(2,"0");
+  const mm=String(Math.floor((elapsed%3600)/60)).padStart(2,"0");
+  const ss=String(elapsed%60).padStart(2,"0");
+
+  const jitterX=(Math.random()-0.5)*2;
+  const jitterY=(Math.random()-0.5)*1;
+
+  ctx.save();
+  ctx.font="14px HomeVideo";
+  ctx.fillStyle="rgba(255,255,255,0.85)";
+  ctx.textAlign="right";
+
+  const baseX = px + GAME_WIDTH - 10 + jitterX;
+  let baseY = py + GAME_HEIGHT - 10 + jitterY;
+
+  // 日付 + 経過時間
+  ctx.fillText(`${dateStr}  ${hh}:${mm}:${ss}`, baseX, baseY);
+  baseY -= 16;
+
+  // カメラID
+  ctx.fillText(CAMERA_ID, baseX, baseY);
+
+  ctx.restore();
+}
+
+// ========================
+// VHSノイズ
+// ========================
+
+function drawTopSmear(px,py){
+  const h=30+Math.random()*10;
+  const offset=(Math.random()-0.5)*20;
+
+  ctx.globalAlpha=0.85;
+  ctx.drawImage(canvas,px,py,GAME_WIDTH,h,px+offset,py,GAME_WIDTH,h);
+  ctx.globalAlpha=1;
+}
+
+function overlayScanlines(px,py){
+  ctx.globalAlpha=0.18;
+  for(let y=0;y<GAME_HEIGHT;y+=2){
+    ctx.fillRect(px,py+y,GAME_WIDTH,1);
+  }
+  ctx.globalAlpha=1;
+}
+
+function overlayNoise(px,py){
+  ctx.globalAlpha=0.08;
+  for(let i=0;i<150;i++){
+    ctx.fillRect(px+Math.random()*GAME_WIDTH,py+Math.random()*GAME_HEIGHT,2,2);
+  }
+  ctx.globalAlpha=1;
+}
+
+function overlayVignette(px,py){
+  const g=ctx.createRadialGradient(
+    px+GAME_WIDTH/2,py+GAME_HEIGHT/2,
+    50,
+    px+GAME_WIDTH/2,py+GAME_HEIGHT/2,
+    300
+  );
+  g.addColorStop(0,"rgba(0,0,0,0)");
+  g.addColorStop(1,"rgba(0,0,0,0.55)");
+  ctx.fillStyle=g;
+  ctx.fillRect(px,py,GAME_WIDTH,GAME_HEIGHT);
+}
+
+// ========================
+// メイン描画
+// ========================
+
+function draw(){
+
+  ctx.fillStyle="black";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  const pos=getGamePosition();
+
+  renderGame();
+
+  const jx=(Math.random()-0.5)*1.5;
+  const jy=(Math.random()-0.5)*1.0;
+
+  ctx.imageSmoothingEnabled=false;
+  ctx.drawImage(gameCanvas,pos.x+jx,pos.y+jy);
+
+  drawTopSmear(pos.x,pos.y);
+  drawSubtitle(pos.x,pos.y);
+
+  overlayVignette(pos.x,pos.y);
+  overlayScanlines(pos.x,pos.y);
+  overlayNoise(pos.x,pos.y);
+
+  drawCCTVOSD(pos.x,pos.y);
+}
+
+// ========================
+// ループ
+// ========================
+
+function loop(){
+  updateMind();
+  updateMovement();
+  draw();
+  requestAnimationFrame(loop);
+}
+
+document.fonts.ready.then(loop);
+
+</script>
+</body>
+</html>
