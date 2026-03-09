@@ -1,0 +1,229 @@
+---
+
+# ■計画前夜：B行動台本（詳細版）
+
+---
+
+## Phase 1：日常の延長（空気を作る）
+
+| 日本語（ト書き／セリフ）             | English (Stage Direction / Line)                        | 秒数 | Aへの影響      |
+| ------------------------ | ------------------------------------------------------- | -- | ---------- |
+| （ドアがノックもなく開く）Bがそのまま入ってくる | (The door opens without a knock. B walks in casually.)  | 3秒 | bond +3    |
+| B「おい、開いてるぞ。」             | "Yo. It's open."                                        | 2秒 | bond +1    |
+| Bがスナックを袋ごと掴み、勝手に食べ始める    | (B grabs a snack bag and starts eating without asking.) | 6秒 | bond +2    |
+| B「お前これまだ残ってたのかよ。」        | "You still had this?"                                   | 3秒 | bond +1    |
+| Bがコントローラーを拾い、適当にボタンを押す   | (B picks up the controller, mashing buttons.)           | 7秒 | bond +2    |
+| B「なあ、このセーブまだ残ってんの？」      | "You still got this save file?"                         | 4秒 | empathy +1 |
+
+→ここは合計約25秒〜30秒。
+「いつもの感じ」をしっかり体験させる。
+
+---
+
+## Phase 2：空気の変化
+
+| 日本語          | English                             | 秒数 | Aへの影響      |
+| ------------ | ----------------------------------- | -- | ---------- |
+| （Bの動きが止まる）   | (B suddenly stops moving.)          | 2秒 | anxiety +2 |
+| Bが鍵をテーブルから拾う | (B picks up the key from the desk.) | 4秒 | anxiety +3 |
+| B「…一応な。」     | "...Just to be sure."               | 3秒 | anxiety +2 |
+| Bが引き出しを開ける   | (He unlocks and opens the drawer.)  | 5秒 | anxiety +4 |
+| （中を無言で見つめる）  | (He stares inside silently.)        | 5秒 | justify +3 |
+| B「完璧だ。」      | "It's perfect."                     | 3秒 | justify +6 |
+
+→空気が重くなる。
+約20秒。
+
+---
+
+## Phase 3：ビデオ提案
+
+| 日本語              | English                               | 秒数 | Aへの影響            |
+| ---------------- | ------------------------------------- | -- | ---------------- |
+| Bが振り向く           | (B turns toward A.)                   | 2秒 | observerAlarm +2 |
+| B「なあ、撮ろうぜ。」      | "Hey. Let's record it."               | 3秒 | observerAlarm +3 |
+| B「俺らの言葉、残しとこうぜ。」 | "Let's leave our words behind."       | 4秒 | justify +4       |
+| Bがバッグからカメラを取り出す  | (He pulls out a camera from his bag.) | 6秒 | observerAlarm +5 |
+| カメラを設置する         | (He sets the camera up.)              | 6秒 | observerAlarm +4 |
+
+→観測の二重構造。
+約20秒。
+
+---
+
+## Phase 4：怒りの独白（B主導）
+
+| 日本語                | English                                    | 秒数 | Aへの影響              |
+| ------------------ | ------------------------------------------ | -- | ------------------ |
+| B「俺らを舐めてた連中、全員聞け。」 | "Everyone who underestimated us — listen." | 5秒 | justify +5         |
+| B「お前らは何も見てなかった。」   | "You never saw anything."                  | 4秒 | justify +3         |
+| B「明日、分かる。」         | "Tomorrow, you'll understand."             | 3秒 | deathAcceptance +4 |
+| Bがカメラ越しに睨む         | (B stares into the lens.)                  | 4秒 | observerAlarm +3   |
+| BがAにカメラを向ける        | (B turns the camera toward A.)             | 3秒 | anxiety +3         |
+
+→合計約20秒。
+
+---
+
+## Phase 5：Aに振る
+
+| 日本語        | English              | 秒数 | Aへの影響                 |
+| ---------- | -------------------- | -- | --------------------- |
+| B「言えよ。」    | "Say something."     | 2秒 | anxiety +5            |
+| B「お前の言葉で。」 | "In your own words." | 3秒 | justify +3 / empathy± |
+| （Bが無言で待つ）  | (B waits silently.)  | 5秒 | anxiety +4            |
+
+→ここでAの状態によりセリフ分岐。
+
+---
+
+## Phase 6：静寂と高揚
+
+| 日本語            | English                     | 秒数 | Aへの影響              |
+| -------------- | --------------------------- | -- | ------------------ |
+| カメラ停止          | (Camera clicks off.)        | 2秒 | observerAlarm -2   |
+| Bが床に座る         | (B sits down on the floor.) | 4秒 | fatigue +2         |
+| B「やっとだな。」      | "Finally."                  | 3秒 | deathAcceptance +3 |
+| B「明日で終わる。」     | "It ends tomorrow."         | 3秒 | deathAcceptance +5 |
+| B「俺ら、やり遂げるんだ。」 | "We finish this."           | 4秒 | justify +4         |
+
+→約16秒。
+
+---
+
+## Phase 7：別れ
+
+| 日本語     | English              | 秒数 | Aへの影響                |
+| ------- | -------------------- | -- | -------------------- |
+| Bが立ち上がる | (B stands up.)       | 3秒 | bond -2              |
+| B「明日な。」 | "Tomorrow."          | 2秒 | bond +1 / anxiety +2 |
+| ドアを開ける  | (He opens the door.) | 3秒 | anxiety +3           |
+| ドアが閉まる  | (The door closes.)   | 2秒 | bond -5 / anxiety +5 |
+| 静寂      | (Silence.)           | 5秒 | 独白フェーズ開始             |
+
+---
+
+
+
+# 1. 感情モデルパラメータ一覧（更新版）
+
+| パラメータ               | 説明                                  | 上限値 | 下限値  | 補足                                              |
+| ------------------- | ----------------------------------- | --- | ---- | ----------------------------------------------- |
+| empathy             | 共感力。他者の感情や苦しみを想像する能力。高いほど人間的な情緒を保つ。 | 100 | -100 | 0以上：共感能力が一定水準以上。0以下：共感が著しく低下し、人間を対象物のように認識する傾向。 |
+| cognitiveDissonance | 矛盾耐性の強さ。                            | 100 | 0    | 数値が高いほど自己正当化が強まり、視野が狭くなる。値が高いほど矛盾を押し潰して合理化する。   |
+| bond                | Bへの依存度。精神的な結びつきの強さ。                 | 100 | 0    | 高いほどB中心の思考。低いほど自立判断が増える。                        |
+| deathAcceptance     | 希死念慮／死の受容。死を恐れない度合い。                | 100 | 0    | 0は希死念慮なし。高いほど死を受容する。                            |
+| observerTrust       | 観測者への信頼度。                           | 100 | -100 | ＋値：信頼。－値：監視・恐怖。                                 |
+| stress              | 精神的ストレス量。                           | 100 | 0    | 高いほど感情の変動が激しい。                                  |
+| stamina             | 肉体的スタミナ。                            | 100 | 0    | 低いほど行動選択肢が減る。                                   |
+| morality            | 倫理・道徳観。「悪いこと」への抵抗感。                 | 100 | -100 | 高いほど暴力・犯罪への抵抗が強い。0以下で倫理観が崩れ始める。                 |
+| isolation           | 孤立感。社会的孤独の感覚。                       | 100 | 0    | 高いほど寂しさが強い。Bへの依存増大。独り言増加。                       |
+
+---
+
+# 2. 心理ドリフト（毎tick相互作用）
+
+| トリガー            | 影響先                 | 変化 | 説明        |
+| --------------- | ------------------- | -- | --------- |
+| stress ↑        | empathy             | -  | ストレスで共感低下 |
+| stress ↑        | cognitiveDissonance | +  | 思考単純化     |
+| stress ↑        | deathAcceptance     | +  | 精神疲労      |
+| stress ↑        | morality            | -  | 道徳判断が鈍る   |
+| stamina ↓       | stress              | +  | 疲労による精神不安 |
+| stamina ↓       | empathy             | -  | 他者配慮低下    |
+| stamina ↓       | morality            | -  | 判断力低下     |
+| bond ↑          | cognitiveDissonance | +  | B思想への同調   |
+| bond ↑          | deathAcceptance     | +  | 共犯心理      |
+| bond ↑          | isolation           | -  | Bが孤独を埋める  |
+| empathy ↑       | cognitiveDissonance | -  | 矛盾への気付き   |
+| empathy ↑       | deathAcceptance     | -  | 他者を想像     |
+| empathy ↑       | morality            | +  | 倫理回復      |
+| observerTrust ↑ | stress              | -  | 安心感       |
+| observerTrust ↑ | empathy             | +  | 心理的安定     |
+| observerTrust ↓ | stress              | +  | 被監視感覚     |
+| isolation ↑     | stress              | +  | 孤独ストレス    |
+| isolation ↑     | bond                | +  | B依存       |
+| isolation ↑     | deathAcceptance     | +  | 絶望感       |
+| morality ↑      | cognitiveDissonance | -  | 自己正当化を抑える |
+
+---
+
+# 3. 閾値トリガー（強い心理変化）
+
+| 条件                       | 影響                     | 説明      |
+| ------------------------ | ---------------------- | ------- |
+| stress > 70              | empathy -10            | 強ストレス   |
+| stress > 80              | cognitiveDissonance +8 | 思考単純化   |
+| stamina < 20             | stress +10             | 疲労      |
+| stamina < 10             | empathy -5             | 感情鈍化    |
+| empathy < 0              | morality -5            | 人間性低下   |
+| empathy < -30            | bond +5                | Bだけが理解者 |
+| cognitiveDissonance > 70 | empathy -4             | 自己正当化   |
+| bond > 80                | cognitiveDissonance +6 | 盲信      |
+| bond < 20                | cognitiveDissonance -6 | 自立思考    |
+| deathAcceptance > 70     | stress -4              | 死の受容    |
+| observerTrust < -30      | stress +8              | 監視恐怖    |
+| observerTrust > 60       | stress -6              | 精神安定    |
+| morality < 0             | deathAcceptance +4     | 罪悪感低下   |
+| morality > 60            | cognitiveDissonance -5 | 良心      |
+| isolation > 70           | bond +8                | B依存増大   |
+| isolation > 80           | stress +6              | 孤独暴走    |
+| isolation > 60           | empathy -4             | 他者への距離  |
+
+---
+
+# 4. 心理パラメータの衝突構造
+
+Aの心理は次の3つの衝突軸で成立する。
+
+### 人間性軸
+
+```
+empathy
+   VS
+cognitiveDissonance
+```
+
+共感 vs 自己正当化
+
+---
+
+### 社会軸
+
+```
+morality
+   VS
+deathAcceptance
+```
+
+倫理 vs 破滅
+
+---
+
+### 依存軸
+
+```
+bond
+   VS
+isolation
+```
+
+B依存 vs 社会孤立
+
+---
+
+# 5. 更新版パラメータ優先順位
+
+心理支配力。
+
+1. empathy
+2. morality
+3. cognitiveDissonance
+4. bond
+5. isolation
+6. stress
+7. deathAcceptance
+8. observerTrust
+9. stamina
+
+---

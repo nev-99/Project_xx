@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>A Emotion Model - Night Before</title>
+<link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+
+<header>
+<h1>Night Before Prototype</h1>
+<button id="toggleDebugBtn">デバッグ非表示</button>
+</header>
+
+<main>
+
+<section class="card">
+<div class="room-grid" id="roomGrid"></div>
+</section>
+
+<section class="card" id="debugPanel">
+<div id="actionLabel"></div>
+<div id="statePanel"></div>
+<div class="logpane" id="logPane"></div>
+<div class="hover-debug" id="hoverDebugArea"></div>
+</section>
+
+</main>
+
+<!-- 外部データ -->
+<script src="scenario.js" defer></script>
+<script src="action.js" defer></script>
+
+<!-- 感情モデル -->
+<script src="model.js" defer></script>
+
+<!-- システム -->
+<script src="system.js" defer></script>
+
+</body>
+</html>
